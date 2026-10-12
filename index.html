@@ -108,12 +108,14 @@
     <button class="icon" id="expClose" title="Exit (Esc)">✕</button>
     <div class="modes"><button data-mode="cinematic">Cinematic Flyover</button><button data-mode="free">Free Explore</button><button data-mode="walk">Walk the City</button></div>
     <label class="todl">☀<input type="range" class="tod" min="0" max="1" step="0.01" value="0"><span>🌙</span></label>
+    <button id="engine" title="Switch to Google Photorealistic 3D Tiles (needs your API key)">🗺 Open-data terrain</button>
     <button class="icon" id="snd" title="Soundtrack">🔇</button>
     <button class="icon" id="pause" title="Pause">⏸</button>
   </div>
-  <div class="caption"></div><div class="hotspots"></div>
+  <div class="dusk"></div><div class="caption"></div><div class="hotspots"></div>
   <button class="fwd">▲ fly / walk</button>
   <div class="progress"><i></i></div><div class="fade"></div>
+  <p class="attr" id="expAttr"></p>
   <p class="hint">Cinematic: sit back · Free: drag to look, WASD + Q/E, Shift = fast · Walk: drag to look, WASD</p>
 </div>
 
@@ -121,6 +123,7 @@
 <aside class="drawer" id="drawer" hidden></aside>
 <div class="modal" id="modal" hidden><div class="box" id="modalBox"></div></div>
 <div class="toast" id="toast"></div>
+<script src="config.js" onerror="void 0"></script>
 <script type="module" src="js/main.js"></script>
 </body>
 </html>

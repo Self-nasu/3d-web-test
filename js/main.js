@@ -86,7 +86,7 @@ document.addEventListener('click', e => {
   const d = t.dataset; if (t.tagName === 'A' && t.getAttribute('href') === '#') e.preventDefault();
   if (d.place) openPlace(byId(places, d.place)); else if (d.artisan) { closeModal(); openArtisan(byId(artisans, d.artisan)); }
   else if (d.product) openProduct(byId(products, d.product));
-  else if (d.fly) { closeDrawer(); startExp('free'); exp.goTo(byId(places, d.fly)); }
+  else if (d.fly) { closeDrawer(); startExp('free').then(() => exp.goTo(byId(places, d.fly))); }
   else if (d.disc) { closeDrawer(); stopExp(); selectPlace(d.disc); $('#discover').scrollIntoView(); }
   else if (d.visit) { mark('visits', d.visit); toast('Visit request saved to your passport. (Demo — a live version would message the maker.)'); }
   else if (d.enq) { const p = byId(products, d.enq); pp.enq.push({ productId: p.id, price: p.price }); savePP(); open(`https://wa.me/?text=${encodeURIComponent(`Hello! I found "${p.title}" (${inr(p.price)}) on Udaipur Virtually Yours and would like to enquire.`)}`, '_blank', 'noopener'); }
@@ -96,12 +96,28 @@ document.addEventListener('click', e => {
 
 // ---------- experience overlay
 const expEl = $('#exp'); let exp;
-function startExp(mode) {
-  expEl.hidden = false; document.body.style.overflow = 'hidden';
-  if (!exp) exp = createExperience(expEl, { places, artisans, toast, photo, onPlace: openPlace, onArtisan: openArtisan });
-  exp.start(mode); if (mode === 'free') exp.st.tod = 0.3; setSound(true); $('#snd').textContent = '🔊';
-  $('#pause').style.display = mode === 'cinematic' ? '' : 'none';
+let booting;
+const getKey = () => { try { return localStorage.getItem('uvy-gkey') || ''; } catch { return ''; } };
+const gKey = () => getKey() || window.UVY_CONFIG?.googleKey || '';
+async function bootEngine() {
+  const deps = { places, artisans, toast, photo, onPlace: openPlace, onArtisan: openArtisan };
+  if (gKey()) {
+    try { return await (await import('./cesium-engine.js')).createCesiumExperience(expEl, deps, gKey()); }
+    catch (err) { console.warn(err); toast('Google 3D Tiles unavailable (' + err.message + ') — using open-data terrain instead.'); }
+  }
+  return createExperience(expEl, deps);
 }
+async function startExp(mode) {
+  expEl.hidden = false; document.body.style.overflow = 'hidden';
+  if (!exp) { toast(gKey() ? 'Loading Google Photorealistic 3D Tiles…' : 'Loading real Udaipur terrain…'); exp = await (booting ||= bootEngine()); }
+  exp.start(mode); if (mode === 'free') exp.st.tod = 0.3; $('#expAttr').innerHTML = exp.attribution.join(' · ');
+  $('#engine').textContent = exp.google ? '🌍 Google 3D' : '🗺 Open-data terrain'; $('#pause').style.display = mode === 'cinematic' ? '' : 'none'; setSound(true); $('#snd').textContent = '🔊';
+}
+$('#engine').onclick = () => {
+  const cur = getKey(), k = prompt('Google Photorealistic 3D Tiles need your own Google Maps Platform API key (Map Tiles API enabled, billing on). The key stays in this browser only.\n\nPaste key — or leave empty to switch back to open-data terrain:', cur);
+  if (k === null) return; try { k.trim() ? localStorage.setItem('uvy-gkey', k.trim()) : localStorage.removeItem('uvy-gkey'); } catch {}
+  stopExp(); exp?.dispose?.(); exp = null; booting = null; startExp('cinematic');
+};
 function stopExp() { if (!exp) return; exp.stop(); expEl.hidden = true; document.body.style.overflow = ''; closeDrawer(); setSound(false); $('#snd').textContent = '🔇'; }
 $('#expClose').onclick = stopExp;
 addEventListener('keydown', e => { if (e.key === 'Escape') { if (!$('#modal').hidden) closeModal(); else if (!drawer.hidden) closeDrawer(); else stopExp(); } });
@@ -165,7 +181,7 @@ const link = () => `${location.origin}${location.pathname}#/my?n=${encodeURIComp
 function refreshMy() { $$('#myPlaces .chip').forEach(c => c.classList.toggle('sel', chosen.has(c.dataset.p))); myStats(); drawPostcard(); }
 P.addEventListener('change', e => { const id = e.target.value; if (e.target.checked) { if (chosen.size >= 3) { e.target.checked = false; toast('Choose up to three places.'); return; } chosen.add(id); } else chosen.delete(id); refreshMy(); });
 $('#myName').addEventListener('input', drawPostcard); $$('input[name=style]').forEach(r => r.addEventListener('change', drawPostcard));
-$('#myFly').onclick = () => { const ps = [...chosen].map(id => byId(places, id)); if (!ps.length) return toast('Pick at least one place first.'); startExp('cinematic'); exp.flyThrough(routeFromPlaces(ps), 18 + ps.length * 14, styleVal()); $('#pause').style.display = ''; };
+$('#myFly').onclick = async () => { const ps = [...chosen].map(id => byId(places, id)); if (!ps.length) return toast('Pick at least one place first.'); await startExp('cinematic'); exp.flyThrough(routeFromPlaces(ps, exp.real), (exp.real ? 30 : 18) + ps.length * 14, styleVal()); $('#pause').style.display = ''; };
 $('#myLink').onclick = async () => { const u = link(); try { if (navigator.share) await navigator.share({ title: 'My Udaipur', url: u }); else { await navigator.clipboard.writeText(u); toast('Link copied — your friend opens the same flyover.'); } } catch { prompt('Copy your link', u); } };
 $('#myCard').onclick = () => { drawPostcard(); $('#postcard').toBlob(b => { const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'my-udaipur-postcard.png'; a.click(); }); };
 const Q = [['Your perfect morning?', ['Palace balcony tour', 'Sunrise by the water', 'Wandering lanes', 'Watching a painter work']], ['Pick a souvenir', ['A royal portrait', 'A lake-view photo', 'A hidden-door selfie', 'Something hand-made']], ['Your travel pace?', ['Grand & guided', 'Slow & scenic', 'Curious & lost', 'Chatty & hands-on']]];
