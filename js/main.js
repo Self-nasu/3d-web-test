@@ -190,7 +190,7 @@ const TYPES = [['Royal architecture', ['citypalace', 'jagmandir', 'bagore']], ['
 
 // ---------- credits list
 const items = Object.values(credits).map(c => `<li>${c.file.match(/\.(jpg|png|webp)$/) ? `<img src="${c.file}" alt="" loading="lazy">` : '🎞'}<span><b>${esc(c.caption || c.title)}</b> — “${esc((c.title || '').replace(/^File:/, ''))}” by ${esc(c.author)} · <a href="${c.license_url || c.source}" target="_blank" rel="noopener">${esc(c.license)}</a> · <a href="${c.source}" target="_blank" rel="noopener">source</a></span></li>`);
-items.push('<li>🧊<span><b>3D scenes, audio &amp; product models</b> — procedurally generated for this project (original work).</span></li>', '<li>⚙<span><b>Three.js</b> — © three.js authors, MIT licence.</span></li>');
+items.push('<li>🏔<span><b>Real terrain</b> — elevation: Mapzen / AWS Open Data Terrain Tiles (SRTM, ASTER GDEM, GMTED). Imagery: Sentinel-2 cloudless by <a href="https://s2maps.eu" target="_blank" rel="noopener">EOX IT Services GmbH</a> (CC BY-NC 4.0; contains modified Copernicus Sentinel data 2021).</span></li>', '<li>🌍<span><b>Google Photorealistic 3D Tiles</b> (optional, user-supplied API key) — © Google; attribution shown in the viewer, tiles are streamed and never cached or extracted.</span></li>', '<li>🧊<span><b>3D scenes, audio &amp; product models</b> — procedurally generated for this project (original work).</span></li>', '<li>⚙<span><b>Three.js</b> — © three.js authors, MIT licence.</span></li>');
 $('#creditList').innerHTML = items.join('');
 
 // ---------- boot + share-link router

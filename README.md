@@ -13,7 +13,9 @@ No build step. Three.js is vendored in `vendor/`.
 | Path | Purpose |
 |---|---|
 | `index.html`, `css/`, `js/` | Landing page (parallax), 3D experience, drawers, map, share/postcard |
-| `js/world.js` | Procedural Udaipur terrain/lakes/palaces + walkable lane |
+| `js/terrain.js`, `tools/build_terrain.py` | Real DEM + satellite terrain mesh |
+| `js/cesium-engine.js` | Google Photorealistic 3D Tiles engine (CesiumJS) |
+| `js/world.js` | Sky/lighting, procedural fallback city, stylised walkable lane |
 | `js/experience.js` | Flyover path, 3 modes, captions, hotspots |
 | `js/viewer.js` | Product 3D viewer (drag/zoom) |
 | `data/*.json` | Places, artisans (**sample data**), products — shaped like future DB collections |
@@ -27,8 +29,9 @@ No build step. Three.js is vendored in `vendor/`.
 - Pexels/Pixabay/Mixkit: download manually, put under `assets/`, then `python3 tools/add_credit.py …`.
 - `python3 tools/build_credits.py` refreshes `CREDITS.md`.
 
-## Google Photorealistic 3D Tiles (optional, not bundled)
-Needs your own billed Maps Platform key, coverage check for Udaipur and compliance with Google's terms (attribution, no caching/extraction). The default procedural scene needs no key.
+## Real 3D of Udaipur — two engines
+1. **Open-data terrain (default, no key):** real elevation from AWS Open Data Terrain Tiles + Sentinel-2 satellite imagery, baked into `assets/terrain/` by `python3 tools/build_terrain.py` (add `--imagery esri` locally for sharper Esri imagery — check Esri's terms before publishing). Genuine terrain (lakes, Aravalli ridges, Jag Mandir island) but **no building meshes**, and the imagery is only ~10 m/px.
+2. **Google Photorealistic 3D Tiles (the real building-level mesh):** click **🗺 Open-data terrain** in the HUD and paste a Google Maps Platform key (Map Tiles API enabled, billing on), or copy `config.example.js` to `config.js`. Runs through CesiumJS; flyover, captions, free-explore and street-level walking all work on the real mesh. Attribution stays visible and tiles are never cached. Not yet verified against live Google tiles (no key in the build sandbox) — check Udaipur coverage with your key.
 
 ## Honest limits
-Artisan profiles are sample data. Crowd levels are manual indicators, not live. The 3D city is schematic, not survey-accurate. No payments are processed.
+Artisan profiles are sample data. Crowd levels are manual indicators, not live. In open-data mode there are no buildings, and the stylised lane in *Walk the City* is illustrative (real street-level walking needs the Google engine). No payments are processed.

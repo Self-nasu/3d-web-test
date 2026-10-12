@@ -30,6 +30,13 @@
 - 🟡 T4.2 YouTube CC-BY clips — tool ready, but YouTube bot-blocks this cloud sandbox; run `tools/fetch_youtube.sh` locally
 - 🟡 T4.3 Pexels/Pixabay/Mixkit hero video — pages blocked in sandbox; drop file in assets/video + `add_credit.py` (slot `hero-video`)
 
+## Phase 4b — Real 3D (user request: 'make it real')
+- ✅ R1 Bake real DEM (AWS Terrain Tiles) + satellite mosaic (`tools/build_terrain.py`)
+- ✅ R2 Real-terrain Three.js mesh with lat/lon routes, glossy lakes, close-range grain
+- ✅ R3 Flyover re-authored in real lon/lat/altitude (shared by both engines)
+- 🟡 R4 Google Photorealistic 3D Tiles engine via CesiumJS — implemented, key-failure path tested; **needs your API key to verify live tiles**
+- ⬜ R5 Real building meshes without Google (needs OSM footprints; Overpass unreachable from the build sandbox)
+
 ## Phase 5 — Ship
 - ✅ T5.1 Browser smoke test + screenshots
 - ✅ T5.2 README run instructions; commit & push

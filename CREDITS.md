@@ -10,6 +10,11 @@ Every third-party asset used by the site, with where it appears.
 | Fateh Sagar flyover caption | `assets/img/fatehsagar.jpg` | Fateh Sagar Lake, Udaipur, India (54345526249).jpg | Mustang Joe | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [link](https://commons.wikimedia.org/wiki/File:Fateh_Sagar_Lake,_Udaipur,_India_(54345526249).jpg) |
 | Flyover start - Aravalli hills | `assets/img/aravalli.jpg` | Sunset View of Udaipur.jpg | Siddharthseth20 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [link](https://commons.wikimedia.org/wiki/File:Sunset_View_of_Udaipur.jpg) |
 
+## Real terrain (assets/terrain, built by tools/build_terrain.py)
+- Elevation: Mapzen / AWS Open Data Terrain Tiles (sources include SRTM, ASTER GDEM, GMTED) — https://registry.opendata.aws/terrain-tiles/
+- Imagery: Sentinel-2 cloudless — https://s2maps.eu by EOX IT Services GmbH, CC BY-NC 4.0 (contains modified Copernicus Sentinel data 2021). **Non-commercial licence** — swap the imagery source before any commercial launch.
+- Optional: Google Photorealistic 3D Tiles via CesiumJS (Apache-2.0) with your own key; © Google, attribution must stay visible; no caching/extraction.
+
 ## Original / bundled
 - 3D scenes, ambient audio (WebAudio synth) and product models: procedurally generated for this project.
 - [Three.js](https://threejs.org) r160 — MIT, © three.js authors (`vendor/three.module.js`).
