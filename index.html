@@ -1,174 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Environment</title>
-    <style>
-        body { margin: 0; overflow: hidden; color:  #3b3b3b;}
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Udaipur Virtually Yours</title>
+<meta name="description" content="Fly over the lakes of Udaipur, walk its heritage lanes and meet the artisans who make its culture — in your browser.">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/EXRLoader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/PointerLockControls.js"></script>
-    <script>
-        // Scene, Camera, Renderer
-        const scene = new THREE.Scene();
+<header class="nav" id="nav">
+  <a class="brand" href="#top">UDAIPUR<span>virtually yours</span></a>
+  <nav>
+    <a href="#journeys">Journeys</a><a href="#heritage">Heritage</a><a href="#artisans">Artisans</a><a href="#discover">Discover</a><a href="#my">My Udaipur</a><a href="#credits">Credits</a>
+  </nav>
+</header>
 
-        // Add fog to the scene
-        const fogColor = 0x3b3b3b; // Light blue color for the fog
-        const fogNear = 0;
-        const fogFar = 1700;
-        scene.fog = new THREE.Fog(fogColor, fogNear, fogFar);
+<main id="top">
+<!-- HERO with parallax layers; optional photo/video layers are filled in by main.js when assets exist -->
+<section class="hero" id="hero">
+  <div class="layer sky" data-speed="0.02"></div>
+  <video class="layer herovideo" data-speed="0.05" muted loop playsinline autoplay hidden></video>
+  <img class="layer herophoto" data-speed="0.05" alt="" hidden>
+  <div class="layer sun" data-speed="0.04"></div>
+  <svg class="layer far" data-speed="0.08" viewBox="0 0 1440 400" preserveAspectRatio="none"><path d="M0 400V250l120-60 90 40 140-110 110 80 120-90 150 100 130-70 160 90 120-60 150 80 150-50V400z"/></svg>
+  <svg class="layer mid" data-speed="0.14" viewBox="0 0 1440 400" preserveAspectRatio="none"><path d="M0 400V280l100-40 80 30 120-80 90 60 140-70 120 80 110-40 130 60 150-90 120 70 140-40 140 50V400z"/></svg>
+  <svg class="layer palace" data-speed="0.22" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice">
+    <g><rect x="380" y="150" width="680" height="150"/><rect x="420" y="110" width="600" height="40"/>
+    <g id="towers"></g></g></svg>
+  <div class="layer lake" data-speed="0.3"></div>
+  <div class="hero-copy" data-speed="-0.05">
+    <p class="eyebrow">The city of lakes is waiting</p>
+    <h1>UDAIPUR<em>virtually yours</em></h1>
+    <p class="lead">Fly over its palaces. Wander through its heritage. Meet the hands that create its culture.</p>
+    <div class="cta"><button class="btn gold" data-start="cinematic">Take a virtual flight</button><button class="btn ghost" data-start="walk">Walk the old city</button></div>
+  </div>
+  <p class="photo-credit" id="heroCredit" hidden></p>
+  <div class="scroll-cue">scroll</div>
+</section>
 
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.set(0, 25, 20); // Position the camera
-        camera.lookAt(0, 0, 0); // Look at the center
+<section class="sec" id="journeys">
+  <h2>Choose your journey</h2>
+  <div class="cards four">
+    <button class="card j" data-start="cinematic"><i>✈</i><h3>Fly over the lakes</h3><p>A 70-second cinematic flight from the Aravalli hills to the old city, day into dusk.</p></button>
+    <button class="card j" data-start="walk"><i>🚶</i><h3>Walk the old city</h3><p>Land in a heritage lane. Look for glowing shop signs — each opens a maker's workshop.</p></button>
+    <button class="card j" data-start="free"><i>🧭</i><h3>Free explore</h3><p>Fly anywhere over the valley and tap landmarks to read their stories.</p></button>
+    <a class="card j" href="#artisans"><i>🏺</i><h3>Meet local artisans</h3><p>Maker stories, provenance, 3D product viewer, direct enquiry.</p></a>
+  </div>
+</section>
 
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 0.8;
-        renderer.setClearColor(fogColor); // Match the renderer background to the fog color
-        document.body.appendChild(renderer.domElement);
+<section class="sec alt" id="heritage">
+  <h2>Heritage stops</h2><p class="sub">Short stories, honest visit times and a crowd indicator for every stop.</p>
+  <div class="cards three" id="placeCards"></div>
+</section>
 
-        // Load the EXR Sky
-        const exrLoader = new THREE.EXRLoader();
-        exrLoader.load('textures/sky/mud_road_puresky_2k.exr', function (texture) {
-            texture.mapping = THREE.EquirectangularReflectionMapping;
-            scene.background = texture; // Use EXR for the sky
-            scene.environment = texture; // Use EXR for reflections/lighting
-        });
+<section class="sec" id="artisans">
+  <h2>Meet the makers</h2>
+  <p class="sub">Maker profiles below are <b>sample data for the prototype</b>. A real listing needs consent, identity + craft verification and a workshop visit — and keeps seller claims visibly separate from verified facts.</p>
+  <div class="cards five" id="artisanCards"></div>
+  <h3 class="h3">Ten sample products <small>· tap to inspect in 3D</small></h3>
+  <div class="products" id="productGrid"></div>
+</section>
 
-        // Add a directional light to simulate sunlight
-        const light = new THREE.DirectionalLight(0xffffff, 1);
-        light.position.set(50, 100, 50); // Position the light above the ground
-        scene.add(light);
+<section class="sec alt" id="discover">
+  <h2>Discover &amp; disperse</h2>
+  <p class="sub">Pick a stop to see nearby makers. If it is busy at your hour, we suggest a quieter alternative — with the criteria shown.</p>
+  <div class="disc">
+    <div class="mapwrap"><svg id="map" viewBox="0 0 600 520" aria-label="Schematic map of Udaipur"></svg><p class="fine">Schematic map built from approximate coordinates. Not for navigation.</p></div>
+    <aside class="panel" id="discPanel"></aside>
+  </div>
+</section>
 
-        // Optionally add ambient light for softer shadows
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-        scene.add(ambientLight);
+<section class="sec" id="my">
+  <h2>My Udaipur</h2>
+  <p class="sub">Choose three favourite places and a mood. Get a shareable link, a postcard and your own flyover.</p>
+  <div class="my">
+    <div class="panel">
+      <label>Your name<input id="myName" maxlength="24" placeholder="e.g. Asha"></label>
+      <fieldset><legend>Favourite places (choose up to 3)</legend><div id="myPlaces" class="chips"></div></fieldset>
+      <fieldset><legend>Style</legend><div class="chips"><label class="chip"><input type="radio" name="style" value="day" checked> Daytime</label><label class="chip"><input type="radio" name="style" value="sunset"> Sunset</label></div></fieldset>
+      <div class="row"><button class="btn gold" id="myFly">▶ Play my flyover</button><button class="btn ghost dark" id="myLink">Copy share link</button><button class="btn ghost dark" id="myCard">Download postcard</button></div>
+      <p class="fine" id="myStats"></p>
+      <details class="quiz"><summary>Which Udaipur experience are you? (3-question quiz)</summary><div id="quiz"></div></details>
+    </div>
+    <div class="panel"><canvas id="postcard" width="540" height="675"></canvas></div>
+  </div>
+</section>
 
-        // Load Ground Textures
-        const textureLoader = new THREE.TextureLoader();
-        const albedoMap = textureLoader.load('./textures/patchy-meadow1_albedo.png');
-        const aoMap = textureLoader.load('./textures/patchy-meadow1_ao.png');
-        const normalMap = textureLoader.load('./textures/patchy-meadow1_normal-ogl.png');
-        const heightMap = textureLoader.load('./textures/patchy-meadow1_height.png');
+<section class="sec alt" id="passport">
+  <h2>Local Impact Passport</h2>
+  <p class="sub">What <i>you</i> chose to support in this session. Counts only — no environmental claims, because we don’t yet have a defensible way to measure them.</p>
+  <div class="stats" id="passportStats"></div>
+</section>
 
-        // Ground Material
-        const groundMaterial = new THREE.MeshStandardMaterial({
-            map: albedoMap,
-            aoMap: aoMap,
-            normalMap: normalMap,
-            displacementMap: heightMap,
-            displacementScale: 0.2,
-            roughness: 0.8, // Adjust for more or less bumpiness
-        });
+<section class="sec" id="credits">
+  <h2>Credits &amp; licences</h2>
+  <p class="sub">Every photo, clip or sound used is listed with its author, licence and source. Procedural 3D scenes, music and product models are original to this project. Three.js is MIT-licensed.</p>
+  <ul class="credits" id="creditList"></ul>
+  <p class="fine">YouTube footage is never embedded. Only videos marked Creative Commons (CC BY) may be downloaded locally with <code>tools/fetch_youtube.sh</code> and credited here. See <code>CREDITS.md</code>.</p>
+</section>
+</main>
+<footer class="foot">Udaipur · Virtually Yours — hackathon prototype. Map &amp; heritage facts should be verified locally before travel.</footer>
 
-        // Create Ground Tile Class
-        class GroundTile {
-            constructor(x, z, size) {
-                const groundGeometry = new THREE.PlaneGeometry(size, size, 10, 10);
-                const ground = new THREE.Mesh(groundGeometry, groundMaterial);
-                ground.rotation.x = -Math.PI / 2;
-                ground.position.set(x, 0, z);
-                ground.geometry.attributes.uv2 = ground.geometry.attributes.uv;
-                return ground;
-            }
-        }
+<!-- EXPERIENCE OVERLAY -->
+<div class="exp" id="exp" hidden>
+  <div class="stage"></div>
+  <div class="hud top">
+    <button class="icon" id="expClose" title="Exit (Esc)">✕</button>
+    <div class="modes"><button data-mode="cinematic">Cinematic Flyover</button><button data-mode="free">Free Explore</button><button data-mode="walk">Walk the City</button></div>
+    <label class="todl">☀<input type="range" class="tod" min="0" max="1" step="0.01" value="0"><span>🌙</span></label>
+    <button id="engine" title="Switch to Google Photorealistic 3D Tiles (needs your API key)">🗺 Open-data terrain</button>
+    <button class="icon" id="snd" title="Soundtrack">🔇</button>
+    <button class="icon" id="pause" title="Pause">⏸</button>
+  </div>
+  <div class="dusk"></div><div class="caption"></div><div class="hotspots"></div>
+  <button class="fwd">▲ fly / walk</button>
+  <div class="progress"><i></i></div><div class="fade"></div>
+  <p class="attr" id="expAttr"></p>
+  <p class="hint">Cinematic: sit back · Free: drag to look, WASD + Q/E, Shift = fast · Walk: drag to look, WASD</p>
+</div>
 
-        // Create and Add Ground Tiles
-        const tileSize = 80;
-        const tileCount = 15; // Number of tiles per row/column
-        const radius = tileSize * tileCount / 0.2; // Radius of the circular ground
-
-        for (let x = -radius; x <= radius; x += tileSize) {
-            for (let z = -radius; z <= radius; z += tileSize) {
-                // Calculate distance from the center to determine if the tile should be visible
-                const distanceFromCenter = Math.sqrt(x * x + z * z);
-                if (distanceFromCenter <= radius) {
-                    const tile = new GroundTile(x, z, tileSize);
-                    scene.add(tile);
-                }
-            }
-        }
-
-        // Pointer Lock Controls for Mouse Movement
-        const controls = new THREE.PointerLockControls(camera, document.body);
-
-        // Restrict camera pitch
-        controls.getObject().rotation.set(0, 0, 0); // Reset initial rotation
-        controls.maxPolarAngle = Math.PI / 2 * 1.5; // Limit to 80% of vertical view
-
-        document.body.addEventListener('click', () => {
-            controls.lock();
-        });
-
-        controls.addEventListener('lock', () => {
-            console.log('Pointer locked');
-        });
-
-        controls.addEventListener('unlock', () => {
-            console.log('Pointer unlocked');
-        });
-
-        scene.add(controls.getObject());
-
-        // Movement Variables
-        let moveForward = false, moveBackward = false, moveLeft = false, moveRight = false;
-        const velocity = new THREE.Vector3();
-        const direction = new THREE.Vector3();
-
-        function onKeyDown(event) {
-            switch (event.code) {
-                case 'KeyW': moveForward = true; break;
-                case 'KeyA': moveLeft = true; break;
-                case 'KeyS': moveBackward = true; break;
-                case 'KeyD': moveRight = true; break;
-            }
-        }
-
-        function onKeyUp(event) {
-            switch (event.code) {
-                case 'KeyW': moveForward = false; break;
-                case 'KeyA': moveLeft = false; break;
-                case 'KeyS': moveBackward = false; break;
-                case 'KeyD': moveRight = false; break;
-            }
-        }
-
-        document.addEventListener('keydown', onKeyDown);
-        document.addEventListener('keyup', onKeyUp);
-
-        const movementLimit = 400; // Manually set the movement limit
-
-        function animate() {
-            requestAnimationFrame(animate);
-
-            if (controls.isLocked) {
-                direction.z = Number(moveForward) - Number(moveBackward);
-                direction.x = Number(moveRight) - Number(moveLeft);
-                direction.normalize();
-
-                if (moveForward || moveBackward) velocity.z -= direction.z * 0.1;
-                if (moveLeft || moveRight) velocity.x -= direction.x * 0.1;
-
-                // Move and limit player position
-                controls.moveRight(-velocity.x);
-                controls.moveForward(-velocity.z);
-
-                // Boundary check to keep the player within the manually set area
-                const pos = camera.position;
-                if (Math.abs(pos.x) > movementLimit) pos.x = Math.sign(pos.x) * movementLimit;
-                if (Math.abs(pos.z) > movementLimit) pos.z = Math.sign(pos.z) * movementLimit;
-            }
-
-            renderer.render(scene, camera);
-        }
-
-        animate();
-    </script>
+<!-- DRAWER (place / artisan) and PRODUCT MODAL -->
+<aside class="drawer" id="drawer" hidden></aside>
+<div class="modal" id="modal" hidden><div class="box" id="modalBox"></div></div>
+<div class="toast" id="toast"></div>
+<script src="config.js" onerror="void 0"></script>
+<script type="module" src="js/main.js"></script>
 </body>
 </html>

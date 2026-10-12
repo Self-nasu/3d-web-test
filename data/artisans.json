@@ -1,0 +1,18 @@
+[
+ {"id":"a1","name":"Ramesh Joshi (sample)","craft":"Mewar miniature painting","placeId":"jagdish","lat":24.5806,"lon":73.6830,"world":[-3.5,0,-18],"image":"miniature","years":28,
+  "story":"Third-generation painter working with hand-ground mineral pigments and squirrel-hair brushes on treated paper. A palm-sized piece takes about two weeks.",
+  "verified":{"status":"sample","evidence":"Demo profile — real artisans must be verified (ID + craft certificate + workshop visit) before listing."},
+  "claims":["Natural mineral pigments","Hand-made paper (seller-provided)"],"workshopVisit":true,"video":null},
+ {"id":"a2","name":"Meena Soni (sample)","craft":"Marble inlay & carving","placeId":"jagdish","lat":24.5799,"lon":73.6842,"world":[3.5,0,-34],"image":"marble","years":19,
+  "story":"Cuts and sets semi-precious stone into Makrana-style white marble. Small coasters take a day; a plate several weeks.",
+  "verified":{"status":"sample","evidence":"Demo profile."},"claims":["Makrana marble (seller-provided)"],"workshopVisit":true,"video":null},
+ {"id":"a3","name":"Sunil Chhipa (sample)","craft":"Block-print textiles","placeId":"bagore","lat":24.5792,"lon":73.6801,"world":[-3.5,0,-50],"image":"textile","years":24,
+  "story":"Carves teak printing blocks and prints cotton with vegetable and mineral dyes; each metre needs thousands of hand-stamped impressions.",
+  "verified":{"status":"sample","evidence":"Demo profile."},"claims":["Vegetable dyes (seller-provided)"],"workshopVisit":true,"video":null},
+ {"id":"a4","name":"Kavita Mehta (sample)","craft":"Pichwai painting","placeId":"jagdish","lat":24.5809,"lon":73.6846,"world":[3.5,0,-66],"image":"pichwai","years":15,
+  "story":"Paints temple-hanging style pichwai panels depicting Shrinathji, lotus ponds and cows, using gold leaf accents.",
+  "verified":{"status":"sample","evidence":"Demo profile."},"claims":["Gold leaf accents (seller-provided)"],"workshopVisit":false,"video":null},
+ {"id":"a5","name":"Gopal Lal Silversmith (sample)","craft":"Silver & lac ornament","placeId":"citypalace","lat":24.5771,"lon":73.6829,"world":[-3.5,0,-82],"image":"textile","years":31,
+  "story":"Hammers and chases silver filigree jewellery and small decorative objects at a street-side bench near the palace gate.",
+  "verified":{"status":"sample","evidence":"Demo profile."},"claims":["925 hallmark (seller-provided, check hallmark on purchase)"],"workshopVisit":true,"video":null}
+]

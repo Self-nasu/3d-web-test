@@ -1,0 +1,20 @@
+{
+ "latMin": 24.545,
+ "latMax": 24.625,
+ "lonMin": 73.635,
+ "lonMax": 73.735,
+ "mxMin": 8197010.7045627,
+ "mxMax": 8208142.653642028,
+ "myMin": 2819960.762588013,
+ "myMax": 2829754.1410116893,
+ "demW": 1165,
+ "demH": 1025,
+ "demScale": 0.1,
+ "elevMin": -1656.578125,
+ "elevMax": 919.5,
+ "imagery": "eox",
+ "attribution": [
+  "Elevation: Mapzen/AWS Terrain Tiles (AWS Open Data; sources incl. SRTM, ASTER GDEM, GMTED)",
+  "Imagery: Sentinel-2 cloudless - https://s2maps.eu by EOX IT Services GmbH (CC BY-NC 4.0; contains modified Copernicus Sentinel data 2021)"
+ ]
+}
