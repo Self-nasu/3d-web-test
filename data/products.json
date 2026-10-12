@@ -1,0 +1,12 @@
+[
+ {"id":"p1","artisanId":"a1","title":"Palace Balcony miniature","model":"painting","hero":true,"price":4800,"materials":"Mineral pigment, gold-leaf, handmade paper","size":"15 × 20 cm","days":14,"color":"#c0532f"},
+ {"id":"p2","artisanId":"a1","title":"Peacock Court miniature","model":"painting","price":3200,"materials":"Mineral pigment on paper","size":"12 × 15 cm","days":10,"color":"#1f6f8b"},
+ {"id":"p3","artisanId":"a2","title":"Inlaid marble plate","model":"plate","hero":true,"price":6500,"materials":"White marble, carnelian, lapis, malachite","size":"Ø 20 cm","days":21,"color":"#f1ece1"},
+ {"id":"p4","artisanId":"a2","title":"Inlay coaster set (4)","model":"coaster","price":2400,"materials":"White marble, semi-precious inlay","size":"Ø 10 cm","days":6,"color":"#e8e2d4"},
+ {"id":"p5","artisanId":"a3","title":"Indigo block-print dupatta","model":"cloth","price":1800,"materials":"Cotton, natural indigo","size":"2.2 m","days":4,"color":"#27408b"},
+ {"id":"p6","artisanId":"a3","title":"Madder-red table runner","model":"cloth","price":1400,"materials":"Cotton, madder dye","size":"1.8 m","days":3,"color":"#a63a2a"},
+ {"id":"p7","artisanId":"a4","title":"Lotus-pond pichwai","model":"painting","price":9800,"materials":"Pigment, gold-leaf, cotton cloth","size":"45 × 60 cm","days":30,"color":"#2d6a4f"},
+ {"id":"p8","artisanId":"a4","title":"Pichwai bookmark","model":"bookmark","price":350,"materials":"Pigment on card","size":"4 × 15 cm","days":1,"color":"#d4a017"},
+ {"id":"p9","artisanId":"a5","title":"Filigree silver elephant","model":"elephant","price":7200,"materials":"Silver (hallmark to be checked)","size":"8 cm","days":9,"color":"#c9ced6"},
+ {"id":"p10","artisanId":"a5","title":"Lac-work silver earrings","model":"earrings","price":2900,"materials":"Silver, lac","size":"4 cm","days":5,"color":"#b7410e"}
+]

@@ -1,0 +1,17 @@
+[
+ {"id":"citypalace","name":"City Palace","lat":24.5764,"lon":73.6835,"world":[118,9,22],"image":"citypalace",
+  "tags":["royal","architecture","lake"],"typicalVisitMin":120,"hours":"09:30–17:30 (verify locally)","crowd":[0,0,0,0,0,0,0,0,0,2,3,3,3,3,3,2,2,1,0,0,0,0,0,0],
+  "story":"Begun by Maharana Udai Singh II in 1553 and extended by successive Mewar rulers, the City Palace is a cluster of palaces, courtyards and balconies stacked along the east bank of Lake Pichola. Its mix of Rajput and Mughal motifs is visible in the mirror-work Mor Chowk and the lake-facing zenana balconies."},
+ {"id":"jagmandir","name":"Jag Mandir","lat":24.5695,"lon":73.6783,"world":[12,4,66],"image":"jagmandir",
+  "tags":["royal","lake","quiet"],"typicalVisitMin":90,"hours":"Boat transfers vary by season (verify)","crowd":[0,0,0,0,0,0,0,0,0,1,1,1,1,1,2,2,2,1,0,0,0,0,0,0],
+  "story":"Jag Mandir, the 'Lake Garden Palace', sits on an island in Lake Pichola. Built across the 17th century, it sheltered Prince Khurram — later Shah Jahan — during his exile, and its gul mahal is often linked to the inspiration behind later Mughal architecture."},
+ {"id":"bagore","name":"Bagore Ki Haveli","lat":24.5797,"lon":73.6797,"world":[78,6,-18],"image":"bagore",
+  "tags":["architecture","culture","quiet","lake"],"typicalVisitMin":75,"hours":"10:00–17:30; evening dance show (verify)","crowd":[0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,2,3,3,2,0,0,0,0,0],
+  "story":"An 18th-century haveli on Gangaur Ghat with over a hundred rooms, glass-and-mirror inlay and a museum of Mewari costume, turbans and puppetry. Evenings host a traditional folk-dance performance."},
+ {"id":"jagdish","name":"Jagdish Temple Lanes","lat":24.5802,"lon":73.6837,"world":[150,3,-6],"image":"oldcity",
+  "tags":["culture","hidden-courtyards","artisan","walkable"],"typicalVisitMin":60,"hours":"Lanes open all day; shops ~10:00–20:00","crowd":[0,0,0,0,0,0,1,1,1,1,2,2,2,2,2,2,2,2,2,1,0,0,0,0],
+  "story":"Built in 1651, the Indo-Aryan Jagdish Temple anchors a web of narrow lanes where miniature painters, silversmiths and textile printers still work from small ground-floor studios."},
+ {"id":"saheliyon","name":"Saheliyon Ki Bari","lat":24.5993,"lon":73.6917,"world":[-80,3,-140],"image":"fatehsagar",
+  "tags":["garden","quiet","walkable"],"typicalVisitMin":60,"hours":"09:00–18:00 (verify)","crowd":[0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0],
+  "story":"A 18th-century garden of fountains, lotus pools and marble kiosks, created for the women of the royal court — a calmer alternative to the palace crowds, close to Fateh Sagar."}
+]

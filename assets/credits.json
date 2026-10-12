@@ -1,0 +1,52 @@
+{
+  "hero-pichola": {
+    "file": "assets/img/hero-pichola.jpg",
+    "title": "File:Udaipur City Palace November 2013.jpg",
+    "author": "rusticus80",
+    "license": "CC BY-SA 2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Udaipur_City_Palace_November_2013.jpg",
+    "caption": "Landing hero / parallax background",
+    "bytes": 592804
+  },
+  "citypalace": {
+    "file": "assets/img/citypalace.jpg",
+    "title": "File:Udaipur-City Palace-03-Palace facade-20131013.jpg",
+    "author": "Daniel VILLAFRUELA",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Udaipur-City_Palace-03-Palace_facade-20131013.jpg",
+    "caption": "City Palace heritage card",
+    "bytes": 616003
+  },
+  "jagmandir": {
+    "file": "assets/img/jagmandir.jpg",
+    "title": "File:Udaïpur-VPL 15-Jag Mandir Palace-20131013.jpg",
+    "author": "Daniel VILLAFRUELA",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Uda%C3%AFpur-VPL_15-Jag_Mandir_Palace-20131013.jpg",
+    "caption": "Jag Mandir heritage card",
+    "bytes": 184834
+  },
+  "fatehsagar": {
+    "file": "assets/img/fatehsagar.jpg",
+    "title": "File:Fateh Sagar Lake, Udaipur, India (54345526249).jpg",
+    "author": "Mustang Joe",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Fateh_Sagar_Lake,_Udaipur,_India_(54345526249).jpg",
+    "caption": "Fateh Sagar flyover caption",
+    "bytes": 652095
+  },
+  "aravalli": {
+    "file": "assets/img/aravalli.jpg",
+    "title": "File:Sunset View of Udaipur.jpg",
+    "author": "Siddharthseth20",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Sunset_View_of_Udaipur.jpg",
+    "caption": "Flyover start - Aravalli hills",
+    "bytes": 408623
+  }
+}
